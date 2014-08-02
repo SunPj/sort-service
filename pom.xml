@@ -8,7 +8,9 @@
 
     <properties>
         <spring.version>4.0.1.RELEASE</spring.version>
+        <springsecurity.version>3.2.4.RELEASE</springsecurity.version>
         <freemarker.version>2.3.20</freemarker.version>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
     </properties>
 
     <dependencies>
@@ -35,6 +37,23 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+
         <!--Test-->
         <dependency>
             <groupId>junit</groupId>
@@ -49,6 +68,13 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>webappRunnerSample</finalName>

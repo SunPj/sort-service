@@ -26,4 +26,8 @@
         <property name="prefix" value=""/>
         <property name="suffix" value=".ftl"/>
     </bean>
+
+    <import resource="db.xml" />
+    <import resource="spitter-security.xml" />
+
 </beans>
