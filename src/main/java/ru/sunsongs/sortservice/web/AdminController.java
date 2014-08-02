@@ -1,6 +1,7 @@
 package ru.sunsongs.sortservice.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Контроллер закрытой административной части
@@ -9,5 +10,9 @@ import org.springframework.stereotype.Controller;
  * @time 8/2/14 9:32 AM
  */
 @Controller
-public class AdminBackOfficeController {
+public class AdminController {
+    @RequestMapping("/admin")
+    public String adminPage() {
+        return "adminpage";
+    }
 }

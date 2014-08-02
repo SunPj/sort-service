@@ -11,5 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @time 8/2/14 9:06 AM
  */
 @Controller
-public class UserBackOfficeController {
+public class UserController {
+    @RequestMapping("/user")
+    public String adminPage() {
+        return "userpage";
+    }
 }
