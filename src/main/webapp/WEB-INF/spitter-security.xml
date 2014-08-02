@@ -17,11 +17,15 @@
 
     </http>
 
-    <jdbc-user-service data-source-ref="dataSource"
-                           users-by-username-query="select username, password, true
+    <authentication-manager>
+        <authentication-provider>
+        <jdbc-user-service data-source-ref="dataSource"
+                       users-by-username-query="select username, password, true
       	                                           from users where username = ?"
-                           authorities-by-username-query="select u.username, au.authority
+                       authorities-by-username-query="select u.username, au.authority
       	                                                 from users u, authorities au
-       	                                                where u.id = au.user_id and u.username = ?" />
+       	                                                where u.id = au.user_id and u.username = ?"/>
+        </authentication-provider>
+    </authentication-manager>
 
 </beans:beans>
