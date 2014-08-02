@@ -18,4 +18,9 @@ public class AppController {
     public String showHomePage() {
         return "index";
     }
+
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
 }
