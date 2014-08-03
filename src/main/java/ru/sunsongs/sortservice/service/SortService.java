@@ -1,5 +1,7 @@
 package ru.sunsongs.sortservice.service;
 
+import ru.sunsongs.sortservice.exception.UnknownSortTypeException;
+
 import java.util.Map;
 
 /**
@@ -16,11 +18,22 @@ public interface SortService {
      * @param array массив для сортировки
      * @return отсортированный массив
      */
-    int[] sort(int sortTypeId, int[] array);
+    int[] sort(int sortTypeId, int[] array) throws UnknownSortTypeException;
 
     /**
      * Метод возвращает список досупных алгоритмов сотрировки
      * @return
      */
     Map<String, Integer> getAvailableAlgorithms();
+
+    /**
+     * Возвращает цену для сортировки с идентификатором id,
+     * и кидает UnknownSortTypeException в случае не
+     * существования алгоритма с таким идентификатором
+     *
+     * @param id идентификатор сортировки
+     * @return
+     * @throws UnknownSortTypeException
+     */
+    double getPrice(int id) throws UnknownSortTypeException;
 }

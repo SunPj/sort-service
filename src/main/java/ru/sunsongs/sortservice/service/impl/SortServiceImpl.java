@@ -3,11 +3,11 @@ package ru.sunsongs.sortservice.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import ru.sunsongs.sortservice.exception.UnknownSortTypeException;
 import ru.sunsongs.sortservice.service.SortAlgorithm;
 import ru.sunsongs.sortservice.service.SortService;
 
 import javax.annotation.PostConstruct;
-import javax.swing.text.html.parser.Entity;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,10 +38,9 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public int[] sort(int sortTypeId, int[] array) {
+    public int[] sort(int sortTypeId, int[] array) throws UnknownSortTypeException {
         if (!algorithms.containsKey(sortTypeId)){
-            // TODO
-            throw new RuntimeException("");
+            throw new UnknownSortTypeException();
         }
 
         return algorithms.get(sortTypeId).sort(array);
@@ -55,5 +54,16 @@ public class SortServiceImpl implements SortService {
         }
 
         return availableAlgorithms;
+    }
+
+    @Override
+    public double getPrice(int id) throws UnknownSortTypeException {
+        for (Map.Entry<Integer, SortAlgorithm> entry : algorithms.entrySet()) {
+            if (entry.getKey().equals(id)){
+                return entry.getValue().getType().getPrice();
+            }
+        }
+
+        throw new UnknownSortTypeException();
     }
 }
