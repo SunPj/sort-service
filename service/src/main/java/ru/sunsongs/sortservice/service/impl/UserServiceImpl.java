@@ -2,6 +2,7 @@ package ru.sunsongs.sortservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.sunsongs.sortservice.dao.UserDao;
 import ru.sunsongs.sortservice.model.JsonApiSortRequest;
 import ru.sunsongs.sortservice.model.User;
 import ru.sunsongs.sortservice.service.SortService;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private SortService sortService;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public int[] sortArray(JsonApiSortRequest sortRequest) throws UnknownSortTypeException, NotEnoughBalanceException {
         // получаем пользователя по ключу && проверить API ключ
@@ -28,20 +32,25 @@ public class UserServiceImpl implements UserService {
         // получаем цену
         double price = sortService.getPrice(sortRequest.getSortType());
         // списываем со счета пользователя
-        withdraw(user.getId(), BigDecimal.valueOf(price));
+        withdraw(user, BigDecimal.valueOf(price));
 
         return sortService.sort(sortRequest.getSortType(), sortRequest.getArray());
     }
 
     @Override
     public User getUserByApiKey(String apiKey) {
-        // TODO
-        return null;
+        return userDao.getUserByApiKey(apiKey);
     }
 
     @Override
-    public void withdraw(long userId, BigDecimal amount) throws NotEnoughBalanceException {
-        // TODO
+    public void withdraw(User user, BigDecimal amount) throws NotEnoughBalanceException {
+        // проверка баланса
+        if (user.getBalance().compareTo( amount) < 0){
+            throw new NotEnoughBalanceException();
+        }
+
+        // обновляем баланс
+        userDao.updateBalance(user.getId(), user.getBalance().min(amount));
     }
 
 }
