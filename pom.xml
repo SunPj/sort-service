@@ -73,19 +73,17 @@
                                     <version>7.0.22</version>
                                     <destFileName>webapp-runner.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>ru.sunsongs.sortservice</groupId>
+                                    <artifactId>web</artifactId>
+                                    <version>1.0-SNAPSHOT</version>
+                                    <type>war</type>
+                                    <destFileName>webapp.war</destFileName>
+                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
