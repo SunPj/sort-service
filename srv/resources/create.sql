@@ -33,7 +33,6 @@ CREATE TABLE sort_request
   id integer NOT NULL,
   user_id bigint,
   sort_type integer,
-  date date,
   "array" character varying,
   CONSTRAINT pk PRIMARY KEY (id),
   CONSTRAINT ufkr FOREIGN KEY (user_id)
