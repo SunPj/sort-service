@@ -8,6 +8,8 @@ import ru.sunsongs.sortservice.model.User;
 import ru.sunsongs.sortservice.service.SortService;
 import ru.sunsongs.sortservice.service.UserService;
 import ru.sunsongs.sortservice.service.exception.NotEnoughBalanceException;
+import ru.sunsongs.sortservice.service.exception.RestApiRequestException;
+import ru.sunsongs.sortservice.service.exception.UnknownApiKeyException;
 import ru.sunsongs.sortservice.service.exception.UnknownSortTypeException;
 
 import java.math.BigDecimal;
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public int[] sortArray(JsonApiSortRequest sortRequest) throws UnknownSortTypeException, NotEnoughBalanceException {
+    public int[] sortArray(JsonApiSortRequest sortRequest) throws RestApiRequestException {
         // получаем пользователя по ключу && проверить API ключ
         User user = getUserByApiKey(sortRequest.getApiKey());
         // получаем цену
@@ -38,8 +40,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByApiKey(String apiKey) {
-        return userDao.getUserByApiKey(apiKey);
+    public User getUserByApiKey(String apiKey) throws UnknownApiKeyException {
+        User userByApiKey = userDao.getUserByApiKey(apiKey);
+        if (userByApiKey == null){
+            throw new UnknownApiKeyException();
+        } else {
+            return userByApiKey;
+        }
     }
 
     @Override
