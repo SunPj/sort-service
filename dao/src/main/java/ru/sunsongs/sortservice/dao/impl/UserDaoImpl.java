@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
     public User getUserByApiKey(String apiKey) {
         return (User) getCurrentSession()
             .createCriteria(User.class)
-                .add(Restrictions.eq("api_key", apiKey)).uniqueResult();
+                .add(Restrictions.eq("apiKey", apiKey)).uniqueResult();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
         getCurrentSession().save(balance);
     }
 
-    protected final Session getCurrentSession() {
+    private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 }
