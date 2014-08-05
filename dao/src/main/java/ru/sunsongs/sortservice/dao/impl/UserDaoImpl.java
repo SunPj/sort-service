@@ -10,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import ru.sunsongs.sortservice.dao.UserDao;
+import ru.sunsongs.sortservice.model.SortRequest;
 import ru.sunsongs.sortservice.model.User;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.Arrays;
 
 /**
  * Dao пользователя
@@ -37,12 +40,19 @@ public class UserDaoImpl implements UserDao {
     public void updateBalance(long userId, double balance) {
         User user = (User) getCurrentSession().get(User.class, userId);
         user.setBalance(balance);
-        getCurrentSession().save(balance);
+        getCurrentSession().update(user);
+        getCurrentSession().flush();
     }
 
     @Override
     public void saveRequest(long userId, int[] array, int type) {
-        // TODO соханить данные
+        SortRequest sortRequest = new SortRequest();
+        sortRequest.setUserId(userId);
+        sortRequest.setArray(array);
+        sortRequest.setSortType(type);
+        // save
+        getCurrentSession().save(sortRequest);
+        getCurrentSession().flush();
     }
 
     private Session getCurrentSession() {
