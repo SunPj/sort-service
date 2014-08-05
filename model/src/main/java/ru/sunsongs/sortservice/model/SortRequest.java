@@ -1,6 +1,8 @@
 package ru.sunsongs.sortservice.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
 
@@ -12,13 +14,25 @@ import java.sql.Date;
 @Entity
 @Table(name = "sort_request")
 public class SortRequest {
+
+    @Id
+    @Column(name = "id")
+    private int id;
+
     /** идентификатор пользователя */
+    @Column(name = "user_id")
     private long userId;
+
     /** массив данных для сортировки */
+    @Column(name = "array")
     private int[] array;
+
     /** тип сортировки */
+    @Column(name = "sort_type")
     private int sortType;
+
     /** лата */
+    @Column(name = "date")
     private Date date;
 
     public long getUserId() {
