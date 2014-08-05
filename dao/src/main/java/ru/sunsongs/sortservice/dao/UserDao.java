@@ -25,7 +25,7 @@ public interface UserDao {
      * @param userId идентификато пользователя
      * @param balance баланс
      */
-    void updateBalance(long userId, BigDecimal balance);
+    void updateBalance(long userId, double balance);
 
     /**
      * Сохранение запроса пользователя

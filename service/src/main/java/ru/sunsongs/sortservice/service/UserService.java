@@ -38,5 +38,5 @@ public interface UserService {
      * @param amount
      * @throws NotEnoughBalanceException
      */
-    void withdraw(User user, BigDecimal amount) throws NotEnoughBalanceException;
+    void withdraw(User user, double amount) throws NotEnoughBalanceException;
 }

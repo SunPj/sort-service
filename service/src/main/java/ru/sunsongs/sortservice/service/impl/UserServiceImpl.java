@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         // получаем цену
         double price = sortService.getPrice(sortRequest.getSortType());
         // списываем со счета пользователя
-        withdraw(user, BigDecimal.valueOf(price));
+        withdraw(user, price);
         // сохраняем заказ у пользователя
         userDao.saveRequest(user.getId(), sortRequest.getArray(), sortRequest.getSortType());
 
@@ -52,14 +52,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void withdraw(User user, BigDecimal amount) throws NotEnoughBalanceException {
+    public void withdraw(User user, double amount) throws NotEnoughBalanceException {
         // проверка баланса
-        if (user.getBalance().compareTo( amount) < 0){
+        if (user.getBalance() < amount){
             throw new NotEnoughBalanceException();
         }
 
         // обновляем баланс
-        userDao.updateBalance(user.getId(), user.getBalance().min(amount));
+        userDao.updateBalance(user.getId(), user.getBalance() - amount);
     }
 
 }

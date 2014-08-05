@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateBalance(long userId, BigDecimal balance) {
+    public void updateBalance(long userId, double balance) {
         User user = (User) getCurrentSession().get(User.class, userId);
         user.setBalance(balance);
         getCurrentSession().save(balance);
