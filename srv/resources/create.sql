@@ -13,9 +13,9 @@ CREATE TABLE users
 (
   username text,
   password text,
-  id integer NOT NULL,
-  balance numeric(10,2),
-  api_key character(32),
+  id bigint NOT NULL,
+  balance double precision,
+  api_key character varying(32),
   CONSTRAINT upk PRIMARY KEY (id)
 )
 WITH (
@@ -32,9 +32,9 @@ CREATE TABLE sort_request
 (
   id integer NOT NULL,
   user_id bigint,
-  "array" integer[],
   sort_type integer,
   date date,
+  "array" character varying,
   CONSTRAINT pk PRIMARY KEY (id),
   CONSTRAINT ufkr FOREIGN KEY (user_id)
   REFERENCES users (id) MATCH SIMPLE
