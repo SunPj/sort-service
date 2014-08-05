@@ -25,7 +25,7 @@ public class SortRequest {
 
     /** массив данных для сортировки */
     @Column(name = "array")
-    private int[] array;
+    private String array;
 
     /** тип сортировки */
     @Column(name = "sort_type")
@@ -43,14 +43,6 @@ public class SortRequest {
         this.userId = userId;
     }
 
-    public int[] getArray() {
-        return array;
-    }
-
-    public void setArray(int[] array) {
-        this.array = array;
-    }
-
     public int getSortType() {
         return sortType;
     }
@@ -65,5 +57,13 @@ public class SortRequest {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getArray() {
+        return array;
+    }
+
+    public void setArray(int[] array) {
+        this.array = array.toString();
     }
 }
