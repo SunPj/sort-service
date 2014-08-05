@@ -17,7 +17,7 @@ public class User {
     private long id;
 
     /** имя пользователя */
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String userName;
 
     /** пароль */
