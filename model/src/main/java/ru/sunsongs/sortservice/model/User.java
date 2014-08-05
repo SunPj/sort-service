@@ -28,6 +28,10 @@ public class User {
     @Column(name = "balance")
     private BigDecimal balance;
 
+    /** баланс */
+    @Column(name = "api_key")
+    private String apiKey;
+
     public BigDecimal getBalance() {
         return balance;
     }
@@ -42,5 +46,13 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }
