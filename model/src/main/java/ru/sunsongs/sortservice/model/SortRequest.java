@@ -1,10 +1,9 @@
 package ru.sunsongs.sortservice.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Date;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.Arrays;
 
 /**
  * Заказы на сортировку
@@ -17,6 +16,8 @@ public class SortRequest {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private int id;
 
     /** идентификатор пользователя */
@@ -24,16 +25,12 @@ public class SortRequest {
     private long userId;
 
     /** массив данных для сортировки */
-    @Column(name = "array")
+    @Column(name = "\"array\"")
     private String array;
 
     /** тип сортировки */
     @Column(name = "sort_type")
     private int sortType;
-
-    /** лата */
-    @Column(name = "date")
-    private Date date;
 
     public long getUserId() {
         return userId;
@@ -51,19 +48,11 @@ public class SortRequest {
         this.sortType = sortType;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getArray() {
         return array;
     }
 
     public void setArray(int[] array) {
-        this.array = array.toString();
+        this.array = Arrays.toString(array);
     }
 }
