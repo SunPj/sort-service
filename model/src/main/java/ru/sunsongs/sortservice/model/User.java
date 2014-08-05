@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @time 8/3/14 10:14 AM
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     /** идентификатор пользователя */
     @Id
