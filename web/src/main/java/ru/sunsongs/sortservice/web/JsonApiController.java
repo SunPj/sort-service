@@ -10,6 +10,7 @@ import ru.sunsongs.sortservice.model.JsonApiSortRequest;
 import ru.sunsongs.sortservice.model.JsonApiSortResponse;
 import ru.sunsongs.sortservice.service.UserService;
 import ru.sunsongs.sortservice.service.exception.NotEnoughBalanceException;
+import ru.sunsongs.sortservice.service.exception.RestApiRequestException;
 import ru.sunsongs.sortservice.service.exception.UnknownSortTypeException;
 
 /**
@@ -32,9 +33,9 @@ public class JsonApiController {
         try {
             response.setSortedArray(userService.sortArray(sortRequest));
             response.setSuccess(true);
-        } catch (UnknownSortTypeException | NotEnoughBalanceException e) {
+        } catch (RestApiRequestException e){
             response.setSuccess(false);
-            response.setErrorMessage(e.getMessage());
+            response.setErrorMessage("Ошибка данных в запросе: "+e.getMessage());
         }
 
         return response;
