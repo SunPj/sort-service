@@ -40,6 +40,11 @@ public class UserDaoImpl implements UserDao {
         getCurrentSession().save(balance);
     }
 
+    @Override
+    public void saveRequest(long userId, int[] array, int type) {
+        // TODO соханить данные
+    }
+
     private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }

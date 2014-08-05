@@ -35,6 +35,8 @@ public class UserServiceImpl implements UserService {
         double price = sortService.getPrice(sortRequest.getSortType());
         // списываем со счета пользователя
         withdraw(user, BigDecimal.valueOf(price));
+        // сохраняем заказ у пользователя
+        userDao.saveRequest(user.getId(), sortRequest.getArray(), sortRequest.getSortType());
 
         return sortService.sort(sortRequest.getSortType(), sortRequest.getArray());
     }
