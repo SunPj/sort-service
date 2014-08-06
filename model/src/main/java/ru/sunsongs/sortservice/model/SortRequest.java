@@ -56,4 +56,8 @@ public class SortRequest {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public int getId() {
+        return id;
+    }
 }
