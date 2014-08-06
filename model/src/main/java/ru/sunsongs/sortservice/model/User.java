@@ -1,7 +1,7 @@
 package ru.sunsongs.sortservice.model;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  * @author kraken
@@ -32,6 +32,8 @@ public class User {
     @Column(name = "api_key")
     private String apiKey;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<SortRequest> requests;
 
     public long getId() {
         return id;
@@ -55,5 +57,29 @@ public class User {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public Set<SortRequest> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<SortRequest> requests) {
+        this.requests = requests;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
