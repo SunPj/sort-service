@@ -20,10 +20,6 @@ public class SortRequest {
     @GenericGenerator(name="increment", strategy = "increment")
     private int id;
 
-    /** идентификатор пользователя */
-    @Column(name = "user_id")
-    private long userId;
-
     /** массив данных для сортировки */
     @Column(name = "\"array\"")
     private String array;
@@ -32,13 +28,10 @@ public class SortRequest {
     @Column(name = "sort_type")
     private int sortType;
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+    /** Пользователь - владелец запроса */
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public int getSortType() {
         return sortType;
@@ -54,5 +47,13 @@ public class SortRequest {
 
     public void setArray(int[] array) {
         this.array = Arrays.toString(array);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
