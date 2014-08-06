@@ -21,4 +21,9 @@ public class AppController {
     public String loginPage() {
         return "login";
     }
+
+    @RequestMapping("/access-denied")
+    public String accessDenied(){
+        return "access_denied";
+    }
 }
