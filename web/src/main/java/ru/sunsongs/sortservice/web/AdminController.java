@@ -1,7 +1,11 @@
 package ru.sunsongs.sortservice.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.sunsongs.sortservice.service.SortRequestService;
+
+import java.util.Map;
 
 /**
  * Контроллер закрытой административной части
@@ -11,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class AdminController {
+    @Autowired
+    SortRequestService sortRequestService;
+
     @RequestMapping("/admin")
-    public String adminPage() {
+    public String adminPage(Map<String, Object> map) {
+        map.put("requests", sortRequestService.getAll());
+
         return "adminpage";
     }
 }
