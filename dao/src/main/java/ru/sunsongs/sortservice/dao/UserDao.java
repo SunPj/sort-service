@@ -30,8 +30,8 @@ public interface UserDao {
     /**
      * Сохранение запроса пользователя
      *
-     * @param userId идентификатор пользователя
+     * @param user пользователь
      * @param array массив
      */
-    void saveRequest(long userId, int[] array, int type);
+    void saveRequest(User user, int[] array, int type);
 }

@@ -45,9 +45,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveRequest(long userId, int[] array, int type) {
+    public void saveRequest(User user, int[] array, int type) {
         SortRequest sortRequest = new SortRequest();
-        sortRequest.setUserId(userId);
+        sortRequest.setUser(user);
         sortRequest.setArray(array);
         sortRequest.setSortType(type);
         // save

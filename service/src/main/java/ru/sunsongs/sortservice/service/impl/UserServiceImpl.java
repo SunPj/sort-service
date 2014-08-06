@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         // списываем со счета пользователя
         withdraw(user, price);
         // сохраняем заказ у пользователя
-        userDao.saveRequest(user.getId(), sortRequest.getArray(), sortRequest.getSortType());
+        userDao.saveRequest(user, sortRequest.getArray(), sortRequest.getSortType());
 
         return sortService.sort(sortRequest.getSortType(), sortRequest.getArray());
     }
