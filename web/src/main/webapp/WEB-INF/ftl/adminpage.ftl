@@ -2,6 +2,7 @@
 
 <ul>
 <#list requests as r>
-    <li>${r.array}</li>
+    <li>${r.array} - ${r.user.userName}</li>
 </#list>
+
 </ul>
