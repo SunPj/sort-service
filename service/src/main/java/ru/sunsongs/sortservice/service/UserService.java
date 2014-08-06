@@ -39,4 +39,10 @@ public interface UserService {
      * @throws NotEnoughBalanceException
      */
     void withdraw(User user, double amount) throws NotEnoughBalanceException;
+
+    /**
+     * Получить пользователя по имени
+     * @return
+     */
+    User getUserByName(String name);
 }

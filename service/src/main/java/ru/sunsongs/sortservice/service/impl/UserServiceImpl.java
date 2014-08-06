@@ -62,4 +62,8 @@ public class UserServiceImpl implements UserService {
         userDao.updateBalance(user.getId(), user.getBalance() - amount);
     }
 
+    @Override
+    public User getUserByName(String name) {
+        return userDao.getUserByName(name);
+    }
 }

@@ -34,4 +34,10 @@ public interface UserDao {
      * @param array массив
      */
     void saveRequest(User user, int[] array, int type);
+
+    /**
+     * Получить пользователя по имени
+     * @return
+     */
+    User getUserByName(String name);
 }

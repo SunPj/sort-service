@@ -32,7 +32,7 @@ public class User {
     @Column(name = "api_key")
     private String apiKey;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user")
     private Set<SortRequest> requests;
 
     public long getId() {

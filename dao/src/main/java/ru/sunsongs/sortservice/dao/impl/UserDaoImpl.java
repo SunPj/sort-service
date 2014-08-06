@@ -55,6 +55,13 @@ public class UserDaoImpl implements UserDao {
         getCurrentSession().flush();
     }
 
+    @Override
+    public User getUserByName(String name) {
+        return (User) getCurrentSession()
+                .createCriteria(User.class)
+                .add(Restrictions.eq("userName", name)).uniqueResult();
+    }
+
     private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
