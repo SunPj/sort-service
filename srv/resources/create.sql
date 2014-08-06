@@ -60,3 +60,23 @@ OIDS=FALSE
 );
 ALTER TABLE authorities
 OWNER TO ssuser;
+
+COPY authorities (user_id, authority) FROM stdin;
+1	ROLE_ADMIN
+2	ROLE_USER
+\.
+
+
+-- Sequence: hibernate_sequence
+
+-- DROP SEQUENCE hibernate_sequence;
+
+CREATE SEQUENCE hibernate_sequence
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+ALTER TABLE hibernate_sequence
+  OWNER TO ssuser;
+
