@@ -3,6 +3,7 @@ package ru.sunsongs.sortservice.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.service.SortAlgorithm;
 import ru.sunsongs.sortservice.service.SortService;
 import ru.sunsongs.sortservice.service.exception.UnknownSortTypeException;
@@ -58,9 +59,14 @@ public class SortServiceImpl implements SortService {
 
     @Override
     public double getPrice(int id) throws UnknownSortTypeException {
+        return getSortTypeByTypeId(id).getPrice();
+    }
+
+    @Override
+    public SortType getSortTypeByTypeId(int typeId) throws UnknownSortTypeException {
         for (Map.Entry<Integer, SortAlgorithm> entry : algorithms.entrySet()) {
-            if (entry.getKey().equals(id)){
-                return entry.getValue().getType().getPrice();
+            if (entry.getKey().equals(typeId)){
+                return entry.getValue().getType();
             }
         }
 

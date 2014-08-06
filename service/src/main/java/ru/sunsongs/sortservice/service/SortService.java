@@ -1,5 +1,6 @@
 package ru.sunsongs.sortservice.service;
 
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.service.exception.UnknownSortTypeException;
 
 import java.util.Map;
@@ -36,4 +37,13 @@ public interface SortService {
      * @throws UnknownSortTypeException
      */
     double getPrice(int id) throws UnknownSortTypeException;
+
+    /**
+     * Получение типа сортировки
+     * по идентификатору
+     *
+     * @param typeId
+     * @return
+     */
+    SortType getSortTypeByTypeId(int typeId) throws UnknownSortTypeException;
 }

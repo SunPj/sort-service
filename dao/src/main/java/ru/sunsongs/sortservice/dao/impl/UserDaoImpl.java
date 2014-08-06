@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import ru.sunsongs.sortservice.dao.UserDao;
 import ru.sunsongs.sortservice.model.SortRequest;
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.model.User;
 
 import java.math.BigDecimal;
@@ -45,7 +46,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveRequest(User user, int[] array, int type) {
+    public void saveRequest(User user, int[] array, SortType type) {
         SortRequest sortRequest = new SortRequest();
         sortRequest.setUser(user);
         sortRequest.setArray(array);

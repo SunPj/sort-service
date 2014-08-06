@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sunsongs.sortservice.dao.UserDao;
 import ru.sunsongs.sortservice.model.JsonApiSortRequest;
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.model.User;
 import ru.sunsongs.sortservice.service.SortService;
 import ru.sunsongs.sortservice.service.UserService;
@@ -36,7 +37,8 @@ public class UserServiceImpl implements UserService {
         // списываем со счета пользователя
         withdraw(user, price);
         // сохраняем заказ у пользователя
-        userDao.saveRequest(user, sortRequest.getArray(), sortRequest.getSortType());
+        SortType sortType = sortService.getSortTypeByTypeId(sortRequest.getSortType());
+        userDao.saveRequest(user, sortRequest.getArray(), sortType);
 
         return sortService.sort(sortRequest.getSortType(), sortRequest.getArray());
     }

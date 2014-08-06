@@ -1,5 +1,6 @@
 package ru.sunsongs.sortservice.dao;
 
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.model.User;
 
 import java.math.BigDecimal;
@@ -33,7 +34,7 @@ public interface UserDao {
      * @param user пользователь
      * @param array массив
      */
-    void saveRequest(User user, int[] array, int type);
+    void saveRequest(User user, int[] array, SortType type);
 
     /**
      * Получить пользователя по имени

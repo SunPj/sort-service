@@ -1,6 +1,7 @@
 package ru.sunsongs.sortservice.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.sunsongs.sortservice.model.SortType;
 import ru.sunsongs.sortservice.service.SortAlgorithm;
 
 /**

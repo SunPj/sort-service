@@ -1,4 +1,4 @@
-package ru.sunsongs.sortservice.service.impl;
+package ru.sunsongs.sortservice.model;
 
 /**
  * Алгоритмы сортировок

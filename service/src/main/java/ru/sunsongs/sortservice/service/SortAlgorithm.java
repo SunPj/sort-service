@@ -1,6 +1,6 @@
 package ru.sunsongs.sortservice.service;
 
-import ru.sunsongs.sortservice.service.impl.SortType;
+import ru.sunsongs.sortservice.model.SortType;
 
 /**
  * Интрефей который должен реализовывыть каждый алгоритм сортировки

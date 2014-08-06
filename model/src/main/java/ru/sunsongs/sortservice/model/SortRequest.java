@@ -25,21 +25,14 @@ public class SortRequest {
     private String array;
 
     /** тип сортировки */
+    @Enumerated
     @Column(name = "sort_type")
-    private int sortType;
+    private SortType sortType;
 
     /** Пользователь - владелец запроса */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    public int getSortType() {
-        return sortType;
-    }
-
-    public void setSortType(int sortType) {
-        this.sortType = sortType;
-    }
 
     public String getArray() {
         return array;
@@ -59,5 +52,13 @@ public class SortRequest {
 
     public int getId() {
         return id;
+    }
+
+    public SortType getSortType() {
+        return sortType;
+    }
+
+    public void setSortType(SortType sortType) {
+        this.sortType = sortType;
     }
 }
