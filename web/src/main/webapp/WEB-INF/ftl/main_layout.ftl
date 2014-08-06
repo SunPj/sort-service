@@ -28,8 +28,8 @@ ${scripts!}
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/${springMacroRequestContext.getRequestUri()}/admin">Админка</a></li>
-                        <li class="active"><a href="/${springMacroRequestContext.getRequestUri()}/user">Личный кабинет пользователя</a></li>
+                        <li><a href="/admin">Админка</a></li>
+                        <li><a href="/user">Личный кабинет пользователя</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="http://github.com/SunPj/sort-service">Проект на Github</a></li>
@@ -39,7 +39,7 @@ ${scripts!}
         </nav>
 
 
-        <div class="content">
+        <div class="content text-center">
             ${content}
         </div>
 
