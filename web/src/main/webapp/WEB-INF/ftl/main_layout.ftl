@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>?????? ?? ?????????? ????????</title>
+    <title>Sort-service</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -28,11 +28,11 @@ ${scripts!}
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href=".${springMacroRequestContext.getRequestUri()}/admin">???????</a></li>
-                        <li class="active"><a href=".${springMacroRequestContext.getRequestUri()}/user">?????? ???????? ????????????</a></li>
+                        <li class="active"><a href="/${springMacroRequestContext.getRequestUri()}/admin">Админка</a></li>
+                        <li class="active"><a href="/${springMacroRequestContext.getRequestUri()}/user">Личный кабинет пользователя</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://github.com/SunPj/sort-service">??????????? ?? Github</a></li>
+                        <li><a href="http://github.com/SunPj/sort-service">Проект на Github</a></li>
                     </ul>
                 </div>
             </div>

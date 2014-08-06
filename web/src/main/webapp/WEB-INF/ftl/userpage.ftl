@@ -1,1 +1,5 @@
-<h1>User page</h1>
+<#assign content>
+<h1>Личный кабинет пользователя</h1>
+</#assign>
+
+<#include "main_layout.ftl">
