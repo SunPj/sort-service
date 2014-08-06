@@ -14,7 +14,7 @@
                 <tr>
                     <td>${r.id}</td>
                     <td>${r.user.userName}</td>
-                    <td>${r.sortType}</td>
+                    <td>${r.sortType.getName()}</td>
                     <td>${r.array}</td>
                 </tr>
             </#list>
